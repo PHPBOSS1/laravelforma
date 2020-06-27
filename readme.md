@@ -1,3 +1,29 @@
+- [x]  Поставить Laravel 5.8
+- [x]  Создать консольную команду для регистрации пользователя admin с мейлом admin@admin.com и паролем 12345
+- [x]  Установить дефолтную систему авторизации при помощи make:auth ( [https://laravel.su/docs/5.4/authentication](https://laravel.su/docs/5.4/authentication) )
+- [x]  Создать страницу для редактирования данных пользователя:
+    - [x]  Создать миграцию ( [https://laravel.su/docs/5.4/migrations](https://laravel.su/docs/5.4/migrations) ) с добавлением в таблицу users новых полей:
+        - age, тип integer
+        - fio, тип string
+        - about, тип text
+    - [x]  Запустить миграцию
+    - [x]  Создать роут ( [https://laravel.su/docs/5.4/routing](https://laravel.su/docs/5.4/routing) ) на урл `/settings` , ведущий в контроллер `SettingsController` на метод  `edit()` . Роут долен пропускать только залогиненных пользователей.
+    - [x]  Создать контроллер ( [https://laravel.su/docs/5.4/controllers](https://laravel.su/docs/5.4/controllers) ) `SettingsController` и метод `edit()` в нём
+    - [x]  В методе `edit()`
+        - [x]  Получаем залогиненного пользователя
+        - [x]  Передаём его во вьюху ( [https://laravel.su/docs/5.4/blade](https://laravel.su/docs/5.4/blade) ) `settings.blade.php`
+    - [x]  Во вьюхе `settings.blade.php` пишем форму , отправляющую POST запрос на урл `/settings/store` и содержащую поля age, fio с типом text и about с типом textarea
+    - [x]  Делаем роут, принимающий POST на `/settings/store` , контроллер `SettingsController` , метод `store()`
+    - [x]  Во вьюху `settings.blade.php` добавляем html для вывода ошибок валидации ([https://laravel.su/docs/5.4/validation](https://laravel.su/docs/5.4/validation))
+    - [x]  В методе `store()` валидируем запрос, сохраняем данные и делаем редирект на `/settings`
+    - [x]  Правила валидации:
+        - age не должно быть пустым, минимальное значение 18
+        - fio не должно быть пустым, не должно совпадать с about, должно быть максимум 120 символов
+        - about не должно быть пустым, не должно совпадать с fio, должно быть максимум 1000 символов
+    - [x]  Если всё прошло успешно, выводим сообщение "Данные сохранены" ([https://laravel.su/docs/5.4/responses](https://laravel.su/docs/5.4/responses))
+
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
