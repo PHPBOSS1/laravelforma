@@ -20,9 +20,7 @@ Route::group(['middleware'	=>	'auth'], function(){
     Route::get('/settings', 'SettingsController@edit')->name("settings");
 
     Route::post('settings/store', "SettingsController@store");
-    Route::get('/settings/store', function () {
-        return redirect()-route('setting')->with('info', 'Данные сохранены');
-    });
+
 
 });
 
